@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <nav class="nav">
+            <a class="nav-link disabled" href="#"><b>My Feeds</b></a>
+            <a routerLink="/feeds/create" class="nav-link btn btn-outline-primary">Create</a>
+        </nav>
+    </div>
+    <hr />
+    <div class="row">
+      <div  style="padding: 3px;" *ngFor="let feed of feeds | async">
+          <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Author: {{ feed.author }}</h5>
+                <hr />
+                <p class="card-text">Message: {{ feed.message }}</p>
+                <span class="badge badge-info">Date Posted: {{ feed.dateposted | date:'fullDate' }}</span>
+              </div>
+              <div class="card-footer">
+                  <a (click)="delete(feed)" class="btn btn-outline-danger">Delete</a>
+              </div>
+          </div>
+          
+      </div>
+    </div>
+</div>
